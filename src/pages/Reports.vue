@@ -1,13 +1,13 @@
 <template>
-  <q-page class="flex flex-center">
+   <q-page class="flex flex-center">
     <div>
-      Agile visitors
+      Reports page
     </div>
   </q-page>
 </template>
 
 <script>
 export default {
-  name: 'PageIndex'
+  name: 'RepostsPageComponent'
 }
 </script>
