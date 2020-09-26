@@ -1,8 +1,8 @@
 {
   "name": "agile-visitors",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "A visitors management app",
+  "productName": "Agile visitors",
   "author": "Albert E. Hidalgo Taveras <itsalb3rt@gmail.com>",
   "private": true,
   "scripts": {
