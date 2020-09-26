@@ -29,9 +29,11 @@
       </q-toolbar>
     </q-header>
     <q-page-container>
-      <transition name="fade">
-        <router-view />
-      </transition>
+      <q-page padding>
+        <transition name="fade">
+          <router-view />
+        </transition>
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
