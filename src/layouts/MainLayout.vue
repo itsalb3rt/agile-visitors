@@ -2,106 +2,76 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
         <q-toolbar-title>
-          Quasar App
+         <q-btn to="/" flat no-caps no-wrap class="q-ml-xs">
+          <q-icon name="nature_people" color="dark" size="28px" />
+          <q-toolbar-title shrink class="text-weight-bold">
+            Agile visitors
+          </q-toolbar-title>
+        </q-btn>
+        <q-btn
+          to="/"
+          flat
+          aria-label="register-visit"
+        >Register visit</q-btn>
+        <q-btn
+          to="/reports"
+          flat
+          aria-label="reports"
+        >Reports</q-btn>
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn @click="goToGithub" flat no-caps no-wrap class="q-ml-xs">
+          <q-icon :name="icons.fabGithub" color="dark" size="28px" />
+            <div v-show="screenConfig.md || screenConfig.lg" class="q-ml-sm">
+              Github
+            </div>
+        </q-btn>
       </q-toolbar>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
     <q-page-container>
-      <router-view />
+      <transition name="fade">
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+import { fabGithub } from '@quasar/extras/fontawesome-v5'
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  mounted () {
+    console.log(this.$q.screen)
+  },
+  computed: {
+    /**
+     * Built-in quasar screen information for better ui management.
+    */
+    screenConfig () {
+      return this.$q.screen
+    }
+  },
+  methods: {
+    goToGithub () {
+      window.location.href = 'https://github.com/itsalb3rt/agile-visitors'
+    }
+  },
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+      icons: {
+        fabGithub
+      }
     }
   }
 }
 </script>
+
+<style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>
