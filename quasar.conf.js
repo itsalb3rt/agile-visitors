@@ -49,7 +49,7 @@ module.exports = function (ctx) {
       env: {
         API: ctx.dev
           ? 'http://localhost:5000/api'
-          : 'https://prod.api.com'
+          : 'http://localhost:5000/api'
       },
       // transpile: false,
 
