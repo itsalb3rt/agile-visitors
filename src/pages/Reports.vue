@@ -1,8 +1,8 @@
 <template>
   <q-page-container>
     <div class="q-ml-md">
-      <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" />
-      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" />
+      <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" :loading="loading.reportData" @click="fetchReport()" />
+      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" disable />
     </div>
     <q-page>
     <div class="q-pa-sm">
@@ -25,6 +25,7 @@
           title="Report"
           :data="data"
           :columns="columns"
+          :loading="loading.reportData"
           row-key="name"
         />
         </div>
@@ -51,34 +52,39 @@ export default {
       },
       columns: [
         {
-          name: 'visitorCode',
+          name: 'visitor',
           required: true,
           label: 'Visitor code',
           align: 'left',
-          field: 'visitorCode',
+          field: row => row.visitor.code,
           format: val => `${val}`,
           sortable: true
         },
-        { name: 'fullNameVisitor', align: 'left', label: 'Full name visitor', field: 'fullNameVisitor', sortable: true },
-        { name: 'titleVisitor', label: 'Title / Position visitor', field: 'titleVisitor', sortable: true },
-        { name: 'reason', align: 'left', label: 'Reason for visit', field: 'reason' },
-        { name: 'receiverCode', align: 'left', label: 'Receiver code', field: 'receiverCode' },
-        { name: 'fullNameReceiver', align: 'left', label: 'Full name receiver', field: 'fullNameReceiver' },
-        { name: 'titleReceiver', align: 'left', label: 'Title / Position receiver', field: 'titleReceiver', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
-        { name: 'date', align: 'left', label: 'Date', field: 'date', sortable: true }
+        { name: 'fullNameVisitor', align: 'left', label: 'Full name visitor', field: row => row.visitor.fullName, sortable: true },
+        { name: 'titleVisitor', label: 'Title / Position visitor', field: row => row.visitor.titlePosition, sortable: true },
+        { name: 'reason', align: 'left', label: 'Reason for visit', field: 'reasonVisit' },
+        { name: 'receiverCode', align: 'left', label: 'Receiver code', field: row => row.receiver.code },
+        { name: 'fullNameReceiver', align: 'left', label: 'Full name receiver', field: row => row.receiver.fullName },
+        { name: 'titleReceiver', align: 'left', label: 'Title / Position receiver', field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
+        { name: 'date', align: 'left', label: 'Date', field: 'createdAt', sortable: true }
       ],
-      data: [
-        {
-          visitorCode: 13454,
-          fullNameVisitor: 'Pedro Rodriguez',
-          titleVisitor: 'Programer',
-          reason: 'asdasdafasdasdasd',
-          receiverCode: 15465,
-          fullNameReceiver: 'Mario Adans',
-          titleReceiver: 'Accountiung',
-          date: '2018/02/15'
-        }
-      ]
+      data: [],
+      loading: {
+        reportData: false
+      }
+    }
+  },
+  methods: {
+    fetchReport () {
+      this.loading.reportData = true
+      this.$store.dispatch('visits/getAll')
+        .then(response => {
+          this.data = response.data.data
+          this.loading.reportData = false
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 }

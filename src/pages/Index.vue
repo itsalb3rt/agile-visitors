@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-form @submit="createvisit()" class="q-gutter-md">
+    <q-form @submit="createvisit()" ref="formVisits" class="q-gutter-md">
       <div class="row q-gutter-md">
         <div class="col-12 col-md-5 col-sm-12">
           <label class="text-weight-bold text-h4" for="">Visitor</label>
@@ -8,7 +8,8 @@
           <q-input
             label="Visitor code"
             v-model="form.visitor.code"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
+            lazy-rules
             debounce="500"
             :loading="loading.visitor"
             @input="requestVisitorByCode()"
@@ -16,19 +17,19 @@
           <q-input
             label="Full name"
             v-model="form.visitor.fullName"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             label="Title / Position"
             v-model="form.visitor.titlePosition"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             v-model="form.reasonVisit"
             label="Reason for visit"
             filled
             type="textarea"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
           />
         </div>
         <div class="col-12 col-md-5 col-sm-12">
@@ -37,7 +38,7 @@
           <q-input
             label="Receiver code"
             v-model="form.receiver.code"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
             debounce="500"
             :loading="loading.receiver"
             @input="requestReceiverByCode()"
@@ -45,12 +46,12 @@
           <q-input
             label="Full name"
             v-model="form.receiver.fullName"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             label="Title / Position"
             v-model="form.receiver.titlePosition"
-            :rules="formRulesMixin_requiredInput"
+            :rules="[formRulesMixin_requiredInput]"
           />
         </div>
       </div>
@@ -71,16 +72,16 @@ export default {
     return {
       form: {
         visitor: {
-          code: '',
-          fullName: '',
-          titlePosition: ''
+          code: null,
+          fullName: null,
+          titlePosition: null
         },
         receiver: {
           code: '',
           fullName: '',
           titlePosition: ''
         },
-        reasonVisit: ''
+        reasonVisit: null
       },
       loading: {
         visitor: false,
@@ -93,10 +94,10 @@ export default {
       this.$store
         .dispatch('visits/create', this.form)
         .then(response => {
-          this.form.visitor.code = ''
-          this.form.visitor.fullName = ''
-          this.form.visitor.titlePosition = ''
-          this.form.titlePosition = ''
+          this.form.visitor.code = null
+          this.form.visitor.fullName = null
+          this.form.visitor.titlePosition = null
+          this.form.reasonVisit = null
           this.$q.notify({
             type: 'positive',
             message: 'Visit register.'

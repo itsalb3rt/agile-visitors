@@ -1,7 +1,8 @@
 export default {
   data () {
     return {
-      formRulesMixin_requiredInput: [val => !!val || 'Please fill in this field']
+      // eslint-disable-next-line no-mixed-operators
+      formRulesMixin_requiredInput: val => val && val.length > 0 || 'Please fill in this field'
     }
   }
 }
