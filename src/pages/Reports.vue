@@ -75,8 +75,7 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 2,
-        rowsPerPage: 3,
-        rowsNumber: 0
+        rowsPerPage: 3
       }
     }
   },
@@ -85,6 +84,7 @@ export default {
       this.isReportLoading = true
       this.$store.dispatch('visits/getAll')
         .then(({ data: response }) => {
+          console.log(response.data.length)
           this.visits = response.data
           this.initialPagination.rowsNumber = response.data.length
           this.isReportLoading = false
