@@ -8,8 +8,8 @@
     <div class="q-pa-sm">
     <div class="row">
       <div class="col">
-        <MyDatePicker class="inline-block" label="Start" v-model="filters.fromDate" />
-        <MyDatePicker class="inline-block" label="End" v-model="filters.toDate" />
+        <AppDatePicker class="inline-block" label="Start" v-model="filters.fromDate" />
+        <AppDatePicker class="inline-block" label="End" v-model="filters.toDate" />
       </div>
     </div>
     <div class="q-pl-sm row">
@@ -40,7 +40,7 @@
 <script>
 export default {
   components: {
-    MyDatePicker: () => import('../components/AppDatePicker')
+    AppDatePicker: () => import('../components/AppDatePicker')
   },
   name: 'ReportPageComponent',
   data () {
