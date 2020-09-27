@@ -9,20 +9,25 @@
             Agile visitors
           </q-toolbar-title>
         </q-btn>
-        <q-btn
+        <template v-if="!screenConfig.xs">
+          <q-btn
           to="/"
           flat
           aria-label="register-visit"
-        >Register visit</q-btn>
-        <q-btn
-          to="/reports"
-          flat
-          aria-label="reports"
-        >Reports</q-btn>
+          >Register visit</q-btn>
+          <q-btn
+            to="/reports"
+            flat
+            aria-label="reports"
+          >Reports</q-btn>
+        </template>
+        <template v-else>
+          <AppHeaderOptions />
+        </template>
         </q-toolbar-title>
         <q-btn @click="goToGithub" flat no-caps no-wrap class="q-ml-xs">
           <q-icon :name="icons.fabGithub" color="dark" size="28px" />
-            <div v-show="screenConfig.md || screenConfig.lg" class="q-ml-sm">
+            <div v-if="!screenConfig.xs" class="q-ml-sm">
               Github
             </div>
         </q-btn>
@@ -62,6 +67,9 @@ export default {
         fabGithub
       }
     }
+  },
+  components: {
+    AppHeaderOptions: () => import('../components/AppHeaderOptions')
   }
 }
 </script>
