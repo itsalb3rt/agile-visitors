@@ -4,7 +4,9 @@
       <q-toolbar>
         <q-toolbar-title>
          <q-btn to="/" flat no-caps no-wrap class="q-ml-xs">
-          <q-icon name="nature_people" color="dark" size="28px" />
+          <q-avatar size="28px">
+              <q-img src="icons/favicon-32x32.png" />
+          </q-avatar>
           <q-toolbar-title shrink class="text-weight-bold">
             Agile visitors
           </q-toolbar-title>
