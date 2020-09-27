@@ -25,8 +25,8 @@ To set the API address you must open the file `quasar.conf.js` and modify the fo
 build: {
   env: {
     API: ctx.dev
-      ? 'http://localhost:5000/api'
-      : 'https://prod.api.com'
+      ? 'http://localhost:5000/api' // Development API
+      : 'http://localhost:5000/api' // Production API
   }
 }
 ```
