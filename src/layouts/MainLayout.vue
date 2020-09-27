@@ -43,9 +43,6 @@ import { fabGithub } from '@quasar/extras/fontawesome-v5'
 
 export default {
   name: 'MainLayout',
-  mounted () {
-    console.log(this.$q.screen)
-  },
   computed: {
     /**
      * Built-in quasar screen information for better ui management.
