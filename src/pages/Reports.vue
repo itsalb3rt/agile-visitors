@@ -14,8 +14,8 @@
     </div>
     <div class="q-pl-sm row">
         <div class="col flex">
-          <q-input class="q-mr-md" label="Visitor code" v-model="filters.visitorCode" />
-          <q-input label="Receiver code" v-model="filters.receiverCode" />
+          <q-input disable class="q-mr-md" label="Visitor code" v-model="filters.visitorCode" />
+          <q-input disable label="Receiver code" v-model="filters.receiverCode" />
         </div>
     </div>
     <div class="row q-mt-lg">
@@ -74,17 +74,15 @@ export default {
       initialPagination: {
         sortBy: 'desc',
         descending: false,
-        page: 2,
-        rowsPerPage: 3
+        page: 2
       }
     }
   },
   methods: {
     fetchReport () {
       this.isReportLoading = true
-      this.$store.dispatch('visits/getAll')
+      this.$store.dispatch('visits/getAll', this.filters)
         .then(({ data: response }) => {
-          console.log(response.data.length)
           this.visits = response.data
           this.initialPagination.rowsNumber = response.data.length
           this.isReportLoading = false
