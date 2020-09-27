@@ -1,23 +1,22 @@
-# Quasar App (agile-visitors)
+# Agile visitors :memo:
 
-A Quasar Framework app
+Application for registering employee entries with the possibility of generating reports, validating and storing users with minimal effort.
 
-## Install the dependencies
+![App preview](https://i.imgur.com/aL7IlLR.png)
+
+
+
+**Install the dependencies**
 ```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+**Start the app in development mode (hot-code reloading, error reporting, etc.)**
 ```bash
 quasar dev
 ```
 
-### Lint the files
-```bash
-npm run lint
-```
-
-### Build the app for production
+**Build the app for production**
 ```bash
 quasar build
 ```
