@@ -49,7 +49,7 @@ module.exports = function (ctx) {
       env: {
         API: ctx.dev
           ? 'http://localhost:5000/api'
-          : 'http://localhost:5000/api'
+          : 'https://agile-visitors-api.gibucket.xyz/api' // Free production API
       },
       // transpile: false,
 
