@@ -2,7 +2,7 @@
   <q-page-container>
     <div class="q-ml-md">
       <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" :loading="isReportLoading" @click="fetchReport()" />
-      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" v-show="visits.length > 0" />
+      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" disable v-show="visits.length > 0" />
     </div>
     <q-page>
     <div class="q-pa-sm">
