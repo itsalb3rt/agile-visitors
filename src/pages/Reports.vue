@@ -1,21 +1,21 @@
 <template>
   <q-page-container>
     <div class="q-ml-md">
-      <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" :loading="loading.reportData" @click="fetchReport()" />
+      <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" :loading="isReportLoading" @click="fetchReport()" />
       <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" disable />
     </div>
     <q-page>
     <div class="q-pa-sm">
     <div class="row">
       <div class="col">
-        <MyDatePicker class="inline-block" label="Start" v-model="filters.fromDate" />
-        <MyDatePicker class="inline-block" label="End" v-model="filters.toDate" />
+        <AppDatePicker class="inline-block" label="Start" v-model="filters.fromDate" />
+        <AppDatePicker class="inline-block" label="End" v-model="filters.toDate" />
       </div>
     </div>
     <div class="q-pl-sm row">
         <div class="col flex">
-          <q-input class="q-mr-md" label="Visitor code" v-model="filters.visitorCode" />
-          <q-input label="Receiver code" v-model="filters.receiverCode" />
+          <q-input disable class="q-mr-md" label="Visitor code" v-model="filters.visitorCode" />
+          <q-input disable label="Receiver code" v-model="filters.receiverCode" />
         </div>
     </div>
     <div class="row q-mt-lg">
@@ -23,9 +23,10 @@
         <div class="q-pa-md">
         <q-table
           title="Report"
-          :data="data"
+          :data="visits"
           :columns="columns"
-          :loading="loading.reportData"
+          :loading="isReportLoading"
+          :pagination="initialPagination"
           row-key="name"
         />
         </div>
@@ -39,7 +40,7 @@
 <script>
 export default {
   components: {
-    MyDatePicker: () => import('../components/AppDatePicker')
+    AppDatePicker: () => import('../components/AppDatePicker')
   },
   name: 'ReportPageComponent',
   data () {
@@ -68,19 +69,23 @@ export default {
         { name: 'titleReceiver', align: 'left', label: 'Title / Position receiver', field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
         { name: 'date', align: 'left', label: 'Date', field: 'createdAt', sortable: true }
       ],
-      data: [],
-      loading: {
-        reportData: false
+      visits: [],
+      isReportLoading: false,
+      initialPagination: {
+        sortBy: 'desc',
+        descending: false,
+        page: 2
       }
     }
   },
   methods: {
     fetchReport () {
-      this.loading.reportData = true
-      this.$store.dispatch('visits/getAll')
-        .then(response => {
-          this.data = response.data.data
-          this.loading.reportData = false
+      this.isReportLoading = true
+      this.$store.dispatch('visits/getAll', this.filters)
+        .then(({ data: response }) => {
+          this.visits = response.data
+          this.initialPagination.rowsNumber = response.data.length
+          this.isReportLoading = false
         })
         .catch(error => {
           console.log(error)

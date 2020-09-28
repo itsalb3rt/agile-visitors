@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import users from './Users/index'
-import visits from './Vitis/index'
+import visits from './Visits/index'
 
 Vue.use(Vuex)
 

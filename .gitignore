@@ -6,6 +6,8 @@ node_modules
 .quasar
 /dist
 
+/src/store/store-flag.d.ts
+
 # Cordova related directories and files
 /src-cordova/node_modules
 /src-cordova/platforms
