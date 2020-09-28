@@ -2,17 +2,17 @@
 
 Application for registering employee entries with the possibility of generating reports, validating and storing users with minimal effort.
 
-<center>
-<a href="https://github.com/itsalb3rt/agile-visitors">DEMO</a>
-</center>
+<p align="center">
+  <a href="https://github.com/itsalb3rt/agile-visitors">DEMO</a>
+</p>
 
 <br/>
 
-<center>
-<a href="https://github.com/itsalb3rt/agile-visitors">
-<img src="https://i.imgur.com/nNqdlbi.png" alt="app_demo" />
-</a>
-</center>
+<p align="center">
+  <a href="https://github.com/itsalb3rt/agile-visitors">
+    <img src="https://i.imgur.com/nNqdlbi.png" alt="app_demo" />
+  </a>
+</p>
 
 # Get Started
 
