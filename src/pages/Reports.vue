@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { date } from 'quasar'
+
 export default {
   components: {
     AppDatePicker: () => import('../components/AppDatePicker')
@@ -66,7 +68,7 @@ export default {
         { name: 'receiverCode', align: 'left', label: 'Receiver code', field: row => row.receiver.code },
         { name: 'fullNameReceiver', align: 'left', label: 'Full name receiver', field: row => row.receiver.fullName },
         { name: 'titleReceiver', align: 'left', label: 'Title / Position receiver', field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
-        { name: 'date', align: 'left', label: 'Date', field: 'createdAt', sortable: true }
+        { name: 'date', align: 'left', label: 'Date', field: row => date.formatDate(row.receiver.createdAt, 'YYYY/MM/DD hh:mm:ss A'), sortable: true }
       ],
       visits: [],
       isReportLoading: false
