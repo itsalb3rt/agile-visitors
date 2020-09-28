@@ -26,8 +26,7 @@
           :data="visits"
           :columns="columns"
           :loading="isReportLoading"
-          :pagination="initialPagination"
-          row-key="name"
+          row-key="date"
         />
         </div>
       </div>
@@ -70,12 +69,7 @@ export default {
         { name: 'date', align: 'left', label: 'Date', field: 'createdAt', sortable: true }
       ],
       visits: [],
-      isReportLoading: false,
-      initialPagination: {
-        sortBy: 'desc',
-        descending: false,
-        page: 2
-      }
+      isReportLoading: false
     }
   },
   methods: {
@@ -84,7 +78,6 @@ export default {
       this.$store.dispatch('visits/getAll', this.filters)
         .then(({ data: response }) => {
           this.visits = response.data
-          this.initialPagination.rowsNumber = response.data.length
           this.isReportLoading = false
         })
         .catch(error => {
