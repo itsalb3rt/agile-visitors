@@ -5,7 +5,7 @@ node_modules
 # Quasar core related directories
 .quasar
 /dist
-
+/src-pwa
 /src/store/store-flag.d.ts
 
 # Cordova related directories and files
