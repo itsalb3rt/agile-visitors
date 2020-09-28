@@ -7,7 +7,7 @@
 
           <q-input
             label="Visitor code"
-            v-model="form.visitor.code"
+            v-model.trim="form.visitor.code"
             :rules="[formRulesMixin_requiredInput]"
             lazy-rules
             debounce="500"
@@ -16,16 +16,16 @@
           />
           <q-input
             label="Full name"
-            v-model="form.visitor.fullName"
+            v-model.trim="form.visitor.fullName"
             :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             label="Title / Position"
-            v-model="form.visitor.titlePosition"
+            v-model.trim="form.visitor.titlePosition"
             :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
-            v-model="form.reasonVisit"
+            v-model.trim="form.reasonVisit"
             label="Reason for visit"
             filled
             type="textarea"
@@ -37,7 +37,7 @@
 
           <q-input
             label="Receiver code"
-            v-model="form.receiver.code"
+            v-model.trim="form.receiver.code"
             :rules="[formRulesMixin_requiredInput]"
             debounce="500"
             :loading="loading.receiver"
@@ -45,12 +45,12 @@
           />
           <q-input
             label="Full name"
-            v-model="form.receiver.fullName"
+            v-model.trim="form.receiver.fullName"
             :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             label="Title / Position"
-            v-model="form.receiver.titlePosition"
+            v-model.trim="form.receiver.titlePosition"
             :rules="[formRulesMixin_requiredInput]"
           />
         </div>
