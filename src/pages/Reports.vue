@@ -8,14 +8,14 @@
     <div class="q-pa-sm">
     <div class="row">
       <div class="col">
-        <AppDatePicker class="inline-block" label="Start" v-model="filters.fromDate" />
-        <AppDatePicker class="inline-block" label="End" v-model="filters.toDate" />
+        <AppDatePicker class="inline-block" label="Start" v-model.trim="filters.fromDate" />
+        <AppDatePicker class="inline-block" label="End" v-model.trim="filters.toDate" />
       </div>
     </div>
     <div class="q-pl-sm row">
         <div class="col flex">
-          <q-input disable class="q-mr-md" label="Visitor code" v-model="filters.visitorCode" />
-          <q-input disable label="Receiver code" v-model="filters.receiverCode" />
+          <q-input disable class="q-mr-md" label="Visitor code" v-model.trim="filters.visitorCode" />
+          <q-input disable label="Receiver code" v-model.trim="filters.receiverCode" />
         </div>
     </div>
     <div class="row q-mt-lg">
@@ -80,10 +80,12 @@ export default {
       this.$store.dispatch('visits/getAll', this.filters)
         .then(({ data: response }) => {
           this.visits = response.data
-          this.isReportLoading = false
         })
         .catch(error => {
           console.log(error)
+        })
+        .finally(() => {
+          this.isReportLoading = false
         })
     }
   }
