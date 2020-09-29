@@ -83,6 +83,10 @@ export default {
         })
         .catch(error => {
           console.log(error)
+          this.$q.notify({
+            type: 'negative',
+            message: 'Error while fetching the report.'
+          })
         })
         .finally(() => {
           this.isReportLoading = false
