@@ -2,7 +2,7 @@
   <q-page-container>
     <div class="q-ml-md">
       <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" :loading="isReportLoading" @click="fetchReport()" />
-      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" disable v-show="visits.length > 0" />
+      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" @click="downloadReportAsCSV()" :loading="isDownloadLoading" v-show="visits.length > 0" />
     </div>
     <q-page>
     <div class="q-pa-sm">
@@ -38,6 +38,7 @@
 
 <script>
 import { date } from 'quasar'
+import Papa from 'papaparse'
 
 export default {
   components: {
@@ -71,7 +72,8 @@ export default {
         { name: 'date', align: 'left', label: 'Date', field: row => date.formatDate(row.receiver.createdAt, 'YYYY/MM/DD hh:mm:ss A'), sortable: true }
       ],
       visits: [],
-      isReportLoading: false
+      isReportLoading: false,
+      isDownloadLoading: false
     }
   },
   methods: {
@@ -91,6 +93,40 @@ export default {
         .finally(() => {
           this.isReportLoading = false
         })
+    },
+    downloadReportAsCSV () {
+      this.isDownloadLoading = true
+
+      const parseVisits = []
+
+      this.visits.forEach(visit => {
+        parseVisits.push({
+          visitor_code: visit.visitor.code,
+          visitor_full_name: visit.visitor.fullName,
+          visitor_title_position: visit.visitor.titlePosition,
+          reason_visit: visit.reasonVisit,
+          receiver_code: visit.receiver.code,
+          receiver_full_name: visit.receiver.fullName,
+          date: date.formatDate(visit.createdAt, 'YYYY/MM/DD hh:mm:ss A')
+        })
+      })
+
+      const csv = Papa.unparse(parseVisits)
+      const fileName = `${date.formatDate(Date.now(), 'YYYY/MM/DD hh:mm:ss')}.csv`
+
+      var csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+      var csvURL = null
+      if (navigator.msSaveBlob) {
+        csvURL = navigator.msSaveBlob(csvData, fileName)
+      } else {
+        csvURL = window.URL.createObjectURL(csvData)
+      }
+
+      var tempLink = document.createElement('a')
+      tempLink.href = csvURL
+      tempLink.setAttribute('download', fileName)
+      tempLink.click()
+      this.isDownloadLoading = false
     }
   }
 }
