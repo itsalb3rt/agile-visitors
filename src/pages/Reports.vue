@@ -114,18 +114,11 @@ export default {
       const csv = Papa.unparse(parseVisits)
       const fileName = `${date.formatDate(Date.now(), 'YYYY/MM/DD hh:mm:ss')}.csv`
 
-      var csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
-      var csvURL = null
-      if (navigator.msSaveBlob) {
-        csvURL = navigator.msSaveBlob(csvData, fileName)
-      } else {
-        csvURL = window.URL.createObjectURL(csvData)
-      }
-
-      var tempLink = document.createElement('a')
-      tempLink.href = csvURL
-      tempLink.setAttribute('download', fileName)
-      tempLink.click()
+      const a = document.createElement('a')
+      a.textContent = 'download'
+      a.download = fileName
+      a.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(csv)
+      a.click()
       this.isDownloadLoading = false
     }
   }
