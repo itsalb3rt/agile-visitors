@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="row q-mt-lg">
-        <q-btn color="primary" icon="save" label="SAVE" type="submit" />
+        <q-btn :loading="loading.submitVisit" color="primary" icon="save" label="SAVE" type="submit" />
       </div>
     </q-form>
   </div>
@@ -85,12 +85,14 @@ export default {
       },
       loading: {
         visitor: false,
-        receiver: false
+        receiver: false,
+        submitVisit: false
       }
     }
   },
   methods: {
     createvisit () {
+      this.loading.submitVisit = true
       this.$store
         .dispatch('visits/create', this.form)
         .then(response => {
@@ -109,6 +111,9 @@ export default {
             type: 'negative',
             message: 'Internal server error, try again...'
           })
+        })
+        .finally(() => {
+          this.loading.submitVisit = false
         })
     },
     requestVisitorByCode () {
