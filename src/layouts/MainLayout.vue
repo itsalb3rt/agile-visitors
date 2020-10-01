@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title>
-         <q-btn to="/" flat no-caps no-wrap class="q-ml-xs">
+         <q-btn @click="goToRoute({route: '/', routeName: 'home'})" flat no-caps no-wrap class="q-ml-xs">
           <q-avatar size="28px">
               <q-img src="icons/favicon-32x32.png" />
           </q-avatar>
@@ -13,13 +13,16 @@
         </q-btn>
         <template v-if="!screenConfig.xs">
           <q-btn
-          to="/"
+          @click="goToRoute({route: '/', routeName: 'home'})"
           flat
+          :color="currentPage === 'home'  ? 'yellow' : null"
           aria-label="register-visit"
           >Register visit</q-btn>
           <q-btn
             to="/reports"
+            @click="goToRoute({route: '/reports', routeName: 'reports'})"
             flat
+            :color="currentPage === 'reports'  ? 'yellow' : null"
             aria-label="reports"
           >Reports</q-btn>
         </template>
@@ -50,6 +53,9 @@ import { fabGithub } from '@quasar/extras/fontawesome-v5'
 
 export default {
   name: 'MainLayout',
+  mounted () {
+    this.currentPage = this.$route.name
+  },
   computed: {
     /**
      * Built-in quasar screen information for better ui management.
@@ -61,13 +67,18 @@ export default {
   methods: {
     goToGithub () {
       window.location.href = 'https://github.com/itsalb3rt/agile-visitors'
+    },
+    goToRoute ({ route, routeName }) {
+      this.currentPage = routeName
+      this.$router.push(route)
     }
   },
   data () {
     return {
       icons: {
         fabGithub
-      }
+      },
+      currentPage: 'home'
     }
   },
   components: {
