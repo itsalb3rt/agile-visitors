@@ -7,8 +7,8 @@
 
           <q-input
             label="Visitor code"
-            v-model.trim="form.visitor.code"
-            :rules="[formRulesMixin_requiredInput]"
+            v-model="form.visitor.code"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             lazy-rules
             debounce="500"
             :loading="loading.visitor"
@@ -16,16 +16,16 @@
           />
           <q-input
             label="Full name"
-            v-model.trim="form.visitor.fullName"
-            :rules="[formRulesMixin_requiredInput]"
+            v-model="form.visitor.fullName"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             label="Title / Position"
-            v-model.trim="form.visitor.titlePosition"
+            v-model="form.visitor.titlePosition"
             :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
-            v-model.trim="form.reasonVisit"
+            v-model="form.reasonVisit"
             label="Reason for visit"
             filled
             type="textarea"
@@ -37,20 +37,20 @@
 
           <q-input
             label="Receiver code"
-            v-model.trim="form.receiver.code"
-            :rules="[formRulesMixin_requiredInput]"
+            v-model="form.receiver.code"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             debounce="500"
             :loading="loading.receiver"
             @input="requestReceiverByCode()"
           />
           <q-input
             label="Full name"
-            v-model.trim="form.receiver.fullName"
-            :rules="[formRulesMixin_requiredInput]"
+            v-model="form.receiver.fullName"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             label="Title / Position"
-            v-model.trim="form.receiver.titlePosition"
+            v-model="form.receiver.titlePosition"
             :rules="[formRulesMixin_requiredInput]"
           />
         </div>
