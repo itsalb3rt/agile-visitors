@@ -8,7 +8,7 @@
           <q-input
             label="Visitor code"
             v-model="form.visitor.code"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             lazy-rules
             debounce="500"
             :loading="loading.visitor"
@@ -17,7 +17,7 @@
           <q-input
             label="Full name"
             v-model="form.visitor.fullName"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             label="Title / Position"
@@ -38,7 +38,7 @@
           <q-input
             label="Receiver code"
             v-model="form.receiver.code"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             debounce="500"
             :loading="loading.receiver"
             @input="requestReceiverByCode()"
@@ -46,7 +46,7 @@
           <q-input
             label="Full name"
             v-model="form.receiver.fullName"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             label="Title / Position"
