@@ -19,5 +19,6 @@ export default {
     from_date: 'Desde',
     to_date: 'Hasta',
     csv_button: 'Descargar CSV'
-  }
+  },
+  language: 'Idioma'
 }

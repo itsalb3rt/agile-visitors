@@ -22,5 +22,6 @@ export default {
     from_date: 'Start',
     to_date: 'End',
     csv_button: 'DOWNLOAD CSV'
-  }
+  },
+  language: 'Language'
 }
