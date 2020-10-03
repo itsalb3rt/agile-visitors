@@ -8,6 +8,7 @@
           <q-input
             label="Visitor code"
             v-model="form.visitor.code"
+            maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             lazy-rules
             debounce="500"
@@ -17,15 +18,18 @@
           <q-input
             label="Full name"
             v-model="form.visitor.fullName"
+            maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             label="Title / Position"
             v-model="form.visitor.titlePosition"
+            maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             v-model="form.reasonVisit"
+            maxlength="256"
             label="Reason for visit"
             filled
             type="textarea"
@@ -38,6 +42,7 @@
           <q-input
             label="Receiver code"
             v-model="form.receiver.code"
+            maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             debounce="500"
             :loading="loading.receiver"
@@ -46,11 +51,13 @@
           <q-input
             label="Full name"
             v-model="form.receiver.fullName"
+            maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             label="Title / Position"
             v-model="form.receiver.titlePosition"
+            maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
           />
         </div>
