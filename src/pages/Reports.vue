@@ -21,13 +21,15 @@
     <div class="row q-mt-lg">
       <div class="col">
         <div class="q-pa-md">
-        <q-table
-          :title="$t('reports.title')"
-          :data="visits"
-          :columns="columns"
-          :loading="isReportLoading"
-          row-key="date"
-        />
+          <q-table
+            :title="$t('reports.title')"
+            :data="visits"
+            :columns="columns"
+            :loading="isReportLoading"
+            row-key="date"
+          >
+            <template #top-right>Got {{ visits.length }} results</template>
+          </q-table>
         </div>
       </div>
     </div>

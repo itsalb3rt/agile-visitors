@@ -8,7 +8,7 @@
           <q-input
             :label="$t('register_visit_form.visitor_code')"
             v-model.trim="form.visitor.code"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             lazy-rules
             debounce="500"
             :loading="loading.visitor"
@@ -17,8 +17,7 @@
           <q-input
             :label="$t('register_visit_form.visitor_name')"
             v-model.trim="form.visitor.fullName"
-            :rules="[formRulesMixin_requiredInput]"
-          />
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"/>
           <q-input
             :label="$t('register_visit_form.visitor_title')"
             v-model.trim="form.visitor.titlePosition"
@@ -38,7 +37,7 @@
           <q-input
             :label="$t('register_visit_form.receiver_code')"
             v-model.trim="form.receiver.code"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             debounce="500"
             :loading="loading.receiver"
             @input="requestReceiverByCode()"
@@ -46,7 +45,7 @@
           <q-input
             :label="$t('register_visit_form.receiver_name')"
             v-model.trim="form.receiver.fullName"
-            :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
             :label="$t('register_visit_form.receiver_title')"
