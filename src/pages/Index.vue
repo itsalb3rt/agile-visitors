@@ -3,12 +3,12 @@
     <q-form @submit="createvisit()" ref="formVisits" class="q-gutter-md">
       <div class="row q-gutter-md">
         <div class="col-12 col-md-5 col-sm-12">
-          <label class="text-weight-bold text-h4" for="">Visitor</label>
+          <label class="text-weight-bold text-h4" for="">{{ $t('visitor') }}</label>
 
-          <q-input
-            label="Visitor code"
+          <q-input  
+            :label="$t('register_visit_form.visitor_code')"
             v-model="form.visitor.code"
-            maxlength="30"
+			      maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             lazy-rules
             debounce="500"
@@ -16,31 +16,31 @@
             @input="requestVisitorByCode()"
           />
           <q-input
-            label="Full name"
+            :label="$t('register_visit_form.visitor_name')"
             v-model="form.visitor.fullName"
             maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
-            label="Title / Position"
+            :label="$t('register_visit_form.visitor_title')"
             v-model="form.visitor.titlePosition"
             maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
           />
           <q-input
             v-model="form.reasonVisit"
-            maxlength="256"
-            label="Reason for visit"
+			      maxlength="256"
+            :label="$t('register_visit_form.reason_for_visit')"
             filled
             type="textarea"
             :rules="[formRulesMixin_requiredInput]"
-          />
+           />
         </div>
         <div class="col-12 col-md-5 col-sm-12">
-          <label class="text-weight-bold text-h4" for="">Receiver</label>
+          <label class="text-weight-bold text-h4" for="">{{ $t('receiver') }}</label>
 
           <q-input
-            label="Receiver code"
+            :label="$t('register_visit_form.receiver_code')"
             v-model="form.receiver.code"
             maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
@@ -49,21 +49,21 @@
             @input="requestReceiverByCode()"
           />
           <q-input
-            label="Full name"
+            :label="$t('register_visit_form.receiver_name')"
             v-model="form.receiver.fullName"
             maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
-            label="Title / Position"
+            :label="$t('register_visit_form.receiver_title')"
             v-model="form.receiver.titlePosition"
             maxlength="150"
-            :rules="[formRulesMixin_requiredInput]"
+			      :rules="[formRulesMixin_requiredInput]"
           />
         </div>
       </div>
       <div class="row q-mt-lg">
-        <q-btn :loading="loading.submitVisit" color="primary" icon="save" label="SAVE" type="submit" />
+        <q-btn :loading="loading.submitVisit" color="primary" icon="save" :label="$t('save_button')" type="submit" />
       </div>
     </q-form>
   </div>
