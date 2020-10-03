@@ -5,10 +5,10 @@
         <div class="col-12 col-md-5 col-sm-12">
           <label class="text-weight-bold text-h4" for="">{{ $t('visitor') }}</label>
 
-          <q-input  
+          <q-input
             :label="$t('register_visit_form.visitor_code')"
             v-model="form.visitor.code"
-			      maxlength="30"
+            maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
             lazy-rules
             debounce="500"
@@ -29,7 +29,7 @@
           />
           <q-input
             v-model="form.reasonVisit"
-			      maxlength="256"
+            maxlength="256"
             :label="$t('register_visit_form.reason_for_visit')"
             filled
             type="textarea"
@@ -58,7 +58,7 @@
             :label="$t('register_visit_form.receiver_title')"
             v-model="form.receiver.titlePosition"
             maxlength="150"
-			      :rules="[formRulesMixin_requiredInput]"
+            :rules="[formRulesMixin_requiredInput]"
           />
         </div>
       </div>
