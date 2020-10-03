@@ -17,14 +17,14 @@
           flat
           :color="currentPage === 'home'  ? 'yellow' : null"
           aria-label="register-visit"
-          >Register visit</q-btn>
+          >{{ $t('register_visit_label') }}</q-btn>
           <q-btn
             to="/reports"
             @click="goToRoute({route: '/reports', routeName: 'reports'})"
             flat
             :color="currentPage === 'reports'  ? 'yellow' : null"
             aria-label="reports"
-          >Reports</q-btn>
+          >{{ $t('reports_label') }}</q-btn>
         </template>
         <template v-else>
           <AppHeaderOptions />

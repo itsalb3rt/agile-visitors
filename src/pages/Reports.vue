@@ -1,28 +1,28 @@
 <template>
   <q-page-container>
     <div class="q-ml-md">
-      <q-btn class="q-mr-sm" color="primary" icon="file_copy" label="GET REPORT" :loading="isReportLoading" @click="fetchReport()" />
-      <q-btn color="primary" icon="arrow_circle_down" label="DOWNLOAD CSV" @click="downloadReportAsCSV()" :loading="isDownloadLoading" v-show="visits.length > 0" />
+      <q-btn class="q-mr-sm" color="primary" icon="file_copy" :label="$t('reports.get_report')" :loading="isReportLoading" @click="fetchReport()" />
+      <q-btn color="primary" icon="arrow_circle_down" :label="$t('reports.csv_button')" @click="downloadReportAsCSV()" :loading="isDownloadLoading" v-show="visits.length > 0" />
     </div>
     <q-page>
     <div class="q-pa-sm">
     <div class="row">
       <div class="col">
-        <AppDatePicker class="inline-block" label="Start" v-model.trim="filters.fromDate" />
-        <AppDatePicker class="inline-block" label="End" v-model.trim="filters.toDate" />
+        <AppDatePicker class="inline-block" :label="$t('reports.from_date')" v-model.trim="filters.fromDate" />
+        <AppDatePicker class="inline-block" :label="$t('reports.to_date')" v-model.trim="filters.toDate" />
       </div>
     </div>
     <div class="q-pl-sm row">
         <div class="col flex">
-          <q-input disable class="q-mr-md" label="Visitor code" v-model.trim="filters.visitorCode" />
-          <q-input disable label="Receiver code" v-model.trim="filters.receiverCode" />
+          <q-input disable class="q-mr-md" :label="$t('register_visit_form.visitor_code')" v-model.trim="filters.visitorCode" />
+          <q-input disable :label="$t('register_visit_form.receiver_code')" v-model.trim="filters.receiverCode" />
         </div>
     </div>
     <div class="row q-mt-lg">
       <div class="col">
         <div class="q-pa-md">
         <q-table
-          title="Report"
+          :title="$t('reports.title')"
           :data="visits"
           :columns="columns"
           :loading="isReportLoading"
