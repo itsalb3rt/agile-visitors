@@ -30,6 +30,7 @@
           <AppHeaderOptions />
         </template>
         </q-toolbar-title>
+        <AppLanguageSwitcher/>
         <q-btn @click="goToGithub" flat no-caps no-wrap class="q-ml-xs">
           <q-icon :name="icons.fabGithub" color="dark" size="28px" />
             <div v-if="!screenConfig.xs" class="q-ml-sm">
@@ -82,7 +83,8 @@ export default {
     }
   },
   components: {
-    AppHeaderOptions: () => import('../components/AppHeaderOptions')
+    AppHeaderOptions: () => import('../components/AppHeaderOptions'),
+    AppLanguageSwitcher: () => import('../components/AppLanguageSwitcher')
   }
 }
 </script>
