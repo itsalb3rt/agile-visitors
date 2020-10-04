@@ -23,5 +23,11 @@ export default {
     to_date: 'End',
     csv_button: 'DOWNLOAD CSV'
   },
-  language: 'Language'
+  language: 'Language',
+  common: {
+    messages: {
+      maximum_characters: 'The text must contain a maximum of {NUMBER} characters.',
+      characteres_remaining: 'Characters remaining.'
+    }
+  }
 }
