@@ -17,11 +17,16 @@ export default {
   visitor: 'Visitor',
   receiver: 'Receiver',
   reports: {
-    title: 'Reports',
+    title: 'Records',
     get_report: 'GET REPORT',
     from_date: 'Start',
     to_date: 'End',
-    csv_button: 'DOWNLOAD CSV'
+    csv_button: 'DOWNLOAD CSV',
+    table_results: 'Got {results} results'
   },
-  language: 'Language'
+  language: 'Language',
+  languages: {
+    english: 'English',
+    spanish: 'Spanish'
+  }
 }
