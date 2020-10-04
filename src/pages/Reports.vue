@@ -28,7 +28,7 @@
             :loading="isReportLoading"
             row-key="date"
           >
-            <template #top-right>Got {{ visits.length }} results</template>
+            <template #top-right>{{ $t('reports.table_results',{results: visits.length}) }}</template>
           </q-table>
         </div>
       </div>
