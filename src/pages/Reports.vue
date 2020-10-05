@@ -27,6 +27,7 @@
             :columns="tableColumns"
             :loading="isReportLoading"
             :rows-per-page-label="$t('reports.table_recors_per_page')"
+            :no-data-label="$t('reports.table_no_data')"
             row-key="date"
           >
             <template #top-right>{{ $t('reports.table_results',{results: visits.length}) }}</template>

@@ -29,7 +29,8 @@ export default {
     to_date: 'End',
     csv_button: 'DOWNLOAD CSV',
     table_results: 'Got {results} results',
-    table_recors_per_page: 'Records per page:'
+    table_recors_per_page: 'Records per page:',
+    table_no_data: 'No data available'
   },
   date: 'Date',
   language: 'Language',

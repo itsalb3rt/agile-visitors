@@ -26,7 +26,8 @@ export default {
     to_date: 'Hasta',
     csv_button: 'Descargar CSV',
     table_results: '{results} registros consultados',
-    table_recors_per_page: 'Filas por página:'
+    table_recors_per_page: 'Filas por página:',
+    table_no_data: 'No hay datos'
   },
   date: 'Fecha',
   language: 'Idioma',
