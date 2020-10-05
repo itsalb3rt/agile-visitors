@@ -15,18 +15,21 @@
             :loading="loading.visitor"
             @input="requestVisitorByCode()"
           />
+          <characters-remaining-info :text="form.visitor.code" :maxLength="30" :numberCharactersToNotify="20" />
           <q-input
             :label="$t('register_visit_form.full_name')"
             v-model="form.visitor.fullName"
             maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
+          <characters-remaining-info :text="form.visitor.fullName" :maxLength="70" :numberCharactersToNotify="50" />
           <q-input
             :label="$t('register_visit_form.title')"
             v-model="form.visitor.titlePosition"
             maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
           />
+          <characters-remaining-info :text="form.visitor.titlePosition" :maxLength="150" :numberCharactersToNotify="130" />
           <q-input
             v-model="form.reasonVisit"
             maxlength="256"
@@ -35,6 +38,7 @@
             type="textarea"
             :rules="[formRulesMixin_requiredInput]"
            />
+           <characters-remaining-info :text="form.reasonVisit" :maxLength="256" :numberCharactersToNotify="240" />
         </div>
         <div class="col-12 col-md-5 col-sm-12">
           <label class="text-weight-bold text-h4" for="">{{ $t('receiver') }}</label>
@@ -48,18 +52,21 @@
             :loading="loading.receiver"
             @input="requestReceiverByCode()"
           />
+          <characters-remaining-info :text="form.receiver.code" :maxLength="30" :numberCharactersToNotify="20" />
           <q-input
             :label="$t('register_visit_form.full_name')"
             v-model="form.receiver.fullName"
             maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
+          <characters-remaining-info :text="form.receiver.fullName" :maxLength="70" :numberCharactersToNotify="50" />
           <q-input
             :label="$t('register_visit_form.title')"
             v-model="form.receiver.titlePosition"
             maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
           />
+          <characters-remaining-info :text="form.receiver.titlePosition" :maxLength="150" :numberCharactersToNotify="130" />
         </div>
       </div>
       <div class="row q-mt-lg">
@@ -71,24 +78,26 @@
 
 <script>
 import formMixin from 'src/mixins/FormRules'
+import CharactersRemainingInfo from 'components/CharactersRemainingInfo'
 
 export default {
   name: 'PageIndex',
   mixins: [formMixin],
+  components: { CharactersRemainingInfo },
   data () {
     return {
       form: {
         visitor: {
-          code: null,
-          fullName: null,
-          titlePosition: null
+          code: '',
+          fullName: '',
+          titlePosition: ''
         },
         receiver: {
           code: '',
           fullName: '',
           titlePosition: ''
         },
-        reasonVisit: null
+        reasonVisit: ''
       },
       loading: {
         visitor: false,

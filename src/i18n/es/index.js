@@ -33,5 +33,11 @@ export default {
   languages: {
     english: 'Inglés',
     spanish: 'Español'
+  },
+  common: {
+    messages: {
+      maximum_characters: 'El texto debe contener un máximo de {NUMBER} caracteres.',
+      characteres_remaining: 'Caracteres restantes.'
+    }
   }
 }
