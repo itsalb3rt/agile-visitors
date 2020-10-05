@@ -33,8 +33,8 @@ export default {
   computed: {
     langOptions () {
       return [
-        { value: 'en-us', label: this.$i18n.t('languages.english'), icon: '🇺🇸' },
-        { value: 'es', label: this.$i18n.t('languages.spanish'), icon: '🇪🇸' }
+        { value: 'en-us', label: this.$t('languages.english'), icon: '🇺🇸' },
+        { value: 'es', label: this.$t('languages.spanish'), icon: '🇪🇸' }
       ]
     }
   },

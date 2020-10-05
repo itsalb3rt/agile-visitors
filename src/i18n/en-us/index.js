@@ -5,13 +5,10 @@ export default {
   register_visit_label: 'Register visit',
   reports_label: 'Reports',
   register_visit_form: {
-    visitor_name: 'Full name',
-    visitor_code: 'Visitor code',
-    visitor_title: 'Visitor title',
+    full_name: 'Full name',
+    code: 'Code',
     reason_for_visit: 'Reason for visit',
-    receiver_code: 'Receiver code',
-    receiver_name: 'Receiver name',
-    receiver_title: 'Receiver title'
+    title: 'Position / title'
   },
   save_button: 'Save',
   visitor: 'Visitor',
@@ -22,8 +19,10 @@ export default {
     from_date: 'Start',
     to_date: 'End',
     csv_button: 'DOWNLOAD CSV',
-    table_results: 'Got {results} results'
+    table_results: 'Got {results} results',
+    table_recors_per_page: 'Records per page:'
   },
+  date: 'Date',
   language: 'Language',
   languages: {
     english: 'English',

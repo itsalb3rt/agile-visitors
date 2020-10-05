@@ -2,13 +2,10 @@ export default {
   register_visit_label: 'Registrar visitante',
   reports_label: 'Reportes',
   register_visit_form: {
-    visitor_name: 'Nombre visitante',
-    visitor_code: 'Código visitante',
-    visitor_title: 'Posición visitante',
+    full_name: 'Nombre completo',
+    code: 'Código',
     reason_for_visit: 'Razón de la visita',
-    receiver_code: 'Código recepcionista',
-    receiver_name: 'Nombre recepcionista',
-    receiver_title: 'Posición recepcionista'
+    title: 'Posición'
   },
   save_button: 'Guardar',
   visitor: 'Visitante',
@@ -19,8 +16,10 @@ export default {
     from_date: 'Desde',
     to_date: 'Hasta',
     csv_button: 'Descargar CSV',
-    table_results: '{results} registros consultados'
+    table_results: '{results} registros consultados',
+    table_recors_per_page: 'Filas por página:'
   },
+  date: 'Fecha',
   language: 'Idioma',
   languages: {
     english: 'Inglés',
