@@ -6,7 +6,7 @@
           <label class="text-weight-bold text-h4" for="">{{ $t('visitor') }}</label>
 
           <q-input
-            :label="$t('register_visit_form.visitor_code')"
+            :label="$t('register_visit_form.code')"
             v-model="form.visitor.code"
             maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
@@ -16,13 +16,13 @@
             @input="requestVisitorByCode()"
           />
           <q-input
-            :label="$t('register_visit_form.visitor_name')"
+            :label="$t('register_visit_form.full_name')"
             v-model="form.visitor.fullName"
             maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
-            :label="$t('register_visit_form.visitor_title')"
+            :label="$t('register_visit_form.title')"
             v-model="form.visitor.titlePosition"
             maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
@@ -40,7 +40,7 @@
           <label class="text-weight-bold text-h4" for="">{{ $t('receiver') }}</label>
 
           <q-input
-            :label="$t('register_visit_form.receiver_code')"
+            :label="$t('register_visit_form.code')"
             v-model="form.receiver.code"
             maxlength="30"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_codeInput]"
@@ -49,13 +49,13 @@
             @input="requestReceiverByCode()"
           />
           <q-input
-            :label="$t('register_visit_form.receiver_name')"
+            :label="$t('register_visit_form.full_name')"
             v-model="form.receiver.fullName"
             maxlength="70"
             :rules="[formRulesMixin_requiredInput, formRulesMixin_nameInput]"
           />
           <q-input
-            :label="$t('register_visit_form.receiver_title')"
+            :label="$t('register_visit_form.title')"
             v-model="form.receiver.titlePosition"
             maxlength="150"
             :rules="[formRulesMixin_requiredInput]"
