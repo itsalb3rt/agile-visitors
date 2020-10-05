@@ -10,7 +10,7 @@ Application for registering employee entries with the possibility of generating 
 
 <p align="center">
   <a href="https://agile-visitors.netlify.app/">
-    <img src="https://i.imgur.com/nNqdlbi.png" alt="app_demo" />
+    <img src="https://i.ibb.co/6wQrNVq/Screenshot-from-2020-10-05-09-10-34.png" alt="app_demo" />
   </a>
 </p>
 
