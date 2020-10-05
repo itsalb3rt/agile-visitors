@@ -24,8 +24,9 @@
           <q-table
             :title="$t('reports.title')"
             :data="visits"
-            :columns="columns"
+            :columns="tableColumns"
             :loading="isReportLoading"
+            :rows-per-page-label="$t('reports.table_recors_per_page')"
             row-key="date"
           >
             <template #top-right>{{ $t('reports.table_results',{results: visits.length}) }}</template>
@@ -55,27 +56,31 @@ export default {
         fromDate: '',
         toDate: ''
       },
-      columns: [
+      visits: [],
+      isReportLoading: false,
+      isDownloadLoading: false
+    }
+  },
+  computed: {
+    tableColumns () {
+      return [
         {
           name: 'visitor',
           required: true,
-          label: 'Visitor code',
+          label: this.$t('register_visit_form.visitor_code'),
           align: 'left',
           field: row => row.visitor.code,
           format: val => `${val}`,
           sortable: true
         },
-        { name: 'fullNameVisitor', align: 'left', label: 'Full name visitor', field: row => row.visitor.fullName, sortable: true },
-        { name: 'titleVisitor', label: 'Title / Position visitor', field: row => row.visitor.titlePosition, sortable: true },
-        { name: 'reason', align: 'left', label: 'Reason for visit', field: 'reasonVisit' },
-        { name: 'receiverCode', align: 'left', label: 'Receiver code', field: row => row.receiver.code },
-        { name: 'fullNameReceiver', align: 'left', label: 'Full name receiver', field: row => row.receiver.fullName },
-        { name: 'titleReceiver', align: 'left', label: 'Title / Position receiver', field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
-        { name: 'date', align: 'left', label: 'Date', field: row => date.formatDate(row.createdAt, 'YYYY/MM/DD hh:mm:ss A'), sortable: true }
-      ],
-      visits: [],
-      isReportLoading: false,
-      isDownloadLoading: false
+        { name: 'fullNameVisitor', align: 'left', label: this.$t('register_visit_form.visitor_name'), field: row => row.visitor.fullName, sortable: true },
+        { name: 'titleVisitor', label: this.$t('register_visit_form.visitor_title'), field: row => row.visitor.titlePosition, sortable: true },
+        { name: 'reason', align: 'left', label: this.$t('register_visit_form.reason_for_visit'), field: 'reasonVisit' },
+        { name: 'receiverCode', align: 'left', label: this.$t('register_visit_form.receiver_code'), field: row => row.receiver.code },
+        { name: 'fullNameReceiver', align: 'left', label: this.$t('register_visit_form.receiver_name'), field: row => row.receiver.fullName },
+        { name: 'titleReceiver', align: 'left', label: this.$t('register_visit_form.receiver_title'), field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
+        { name: 'date', align: 'left', label: this.$t('date'), field: row => date.formatDate(row.createdAt, 'YYYY/MM/DD hh:mm:ss A'), sortable: true }
+      ]
     }
   },
   methods: {
