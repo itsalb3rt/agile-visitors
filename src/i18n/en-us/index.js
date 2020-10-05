@@ -10,6 +10,15 @@ export default {
     reason_for_visit: 'Reason for visit',
     title: 'Position / title'
   },
+  reports_table: {
+    visitor_name: 'Visitor name',
+    visitor_code: 'Visitor code',
+    visitor_title: 'Visitor title',
+    reason_for_visit: 'Reason for visit',
+    receiver_code: 'Receiver code',
+    receiver_name: 'Receiver name',
+    receiver_title: 'Receiver title'
+  },
   save_button: 'Save',
   visitor: 'Visitor',
   receiver: 'Receiver',

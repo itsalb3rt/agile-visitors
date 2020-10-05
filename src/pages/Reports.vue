@@ -14,8 +14,8 @@
     </div>
     <div class="q-pl-sm row">
         <div class="col flex">
-          <q-input disable class="q-mr-md" :label="$t('register_visit_form.visitor_code')" v-model.trim="filters.visitorCode" />
-          <q-input disable :label="$t('register_visit_form.receiver_code')" v-model.trim="filters.receiverCode" />
+          <q-input disable class="q-mr-md" :label="$t('reports_table.visitor_code')" v-model.trim="filters.visitorCode" />
+          <q-input disable :label="$t('reports_table.receiver_code')" v-model.trim="filters.receiverCode" />
         </div>
     </div>
     <div class="row q-mt-lg">
@@ -67,18 +67,18 @@ export default {
         {
           name: 'visitor',
           required: true,
-          label: this.$t('register_visit_form.visitor_code'),
+          label: this.$t('reports_table.visitor_code'),
           align: 'left',
           field: row => row.visitor.code,
           format: val => `${val}`,
           sortable: true
         },
-        { name: 'fullNameVisitor', align: 'left', label: this.$t('register_visit_form.visitor_name'), field: row => row.visitor.fullName, sortable: true },
-        { name: 'titleVisitor', label: this.$t('register_visit_form.visitor_title'), field: row => row.visitor.titlePosition, sortable: true },
-        { name: 'reason', align: 'left', label: this.$t('register_visit_form.reason_for_visit'), field: 'reasonVisit' },
-        { name: 'receiverCode', align: 'left', label: this.$t('register_visit_form.receiver_code'), field: row => row.receiver.code },
-        { name: 'fullNameReceiver', align: 'left', label: this.$t('register_visit_form.receiver_name'), field: row => row.receiver.fullName },
-        { name: 'titleReceiver', align: 'left', label: this.$t('register_visit_form.receiver_title'), field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
+        { name: 'fullNameVisitor', align: 'left', label: this.$t('reports_table.visitor_name'), field: row => row.visitor.fullName, sortable: true },
+        { name: 'titleVisitor', label: this.$t('reports_table.visitor_title'), field: row => row.visitor.titlePosition, sortable: true },
+        { name: 'reason', align: 'left', label: this.$t('reports_table.reason_for_visit'), field: 'reasonVisit' },
+        { name: 'receiverCode', align: 'left', label: this.$t('reports_table.receiver_code'), field: row => row.receiver.code },
+        { name: 'fullNameReceiver', align: 'left', label: this.$t('reports_table.receiver_name'), field: row => row.receiver.fullName },
+        { name: 'titleReceiver', align: 'left', label: this.$t('reports_table.receiver_title'), field: row => row.receiver.titlePosition, sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
         { name: 'date', align: 'left', label: this.$t('date'), field: row => date.formatDate(row.createdAt, 'YYYY/MM/DD hh:mm:ss A'), sortable: true }
       ]
     }

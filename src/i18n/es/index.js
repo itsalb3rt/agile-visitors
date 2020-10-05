@@ -7,6 +7,15 @@ export default {
     reason_for_visit: 'Razón de la visita',
     title: 'Posición'
   },
+  reports_table: {
+    visitor_name: 'Nombre visitante',
+    visitor_code: 'Código visitante',
+    visitor_title: 'Posición visitante',
+    reason_for_visit: 'Razón de la visita',
+    receiver_code: 'Código recepcionista',
+    receiver_name: 'Nombre recepcionista',
+    receiver_title: 'Posición recepcionista'
+  },
   save_button: 'Guardar',
   visitor: 'Visitante',
   receiver: 'Recepcionista',
