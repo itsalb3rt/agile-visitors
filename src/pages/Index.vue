@@ -37,6 +37,7 @@
             filled
             type="textarea"
             :rules="[formRulesMixin_requiredInput]"
+            class="q-pt-lg"
            />
            <characters-remaining-info :text="form.reasonVisit" :maxLength="256" :numberCharactersToNotify="240" />
         </div>
