@@ -38,7 +38,10 @@ export default {
   common: {
     messages: {
       maximum_characters: 'El texto debe contener un máximo de {NUMBER} caracteres.',
-      characteres_remaining: 'Caracteres restantes.'
+      characteres_remaining: 'Caracteres restantes.',
+      requiredInput: 'Por favor complete este campo',
+      codeInput: 'Sólo se aceptan caracteres alfanuméricos y - _ #',
+      nameInput: 'Sólo se aceptan caracteres alfabéticos y espacios en blanco'
     }
   }
 }
