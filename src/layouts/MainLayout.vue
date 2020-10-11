@@ -19,6 +19,14 @@
 <script>
 export default {
   name: 'MainLayout',
+  mounted () {
+    this.fetchLanguage()
+  },
+  methods: {
+    fetchLanguage () {
+      this.$i18n.locale = window.localStorage.getItem('_currentLang')
+    }
+  },
   components: {
     DesktopScreenToolbar: () => import('../components/DesktopScreenToolbar'),
     MobileScreenToolbar: () => import('../components/MobileScreenToolbar')

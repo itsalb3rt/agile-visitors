@@ -41,6 +41,7 @@ export default {
   watch: {
     lang (lang) {
       this.$i18n.locale = lang
+      window.localStorage.setItem('_currentLang', lang)
     }
   }
 }
