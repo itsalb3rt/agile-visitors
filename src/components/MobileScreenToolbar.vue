@@ -67,6 +67,7 @@
                 v-model="lang"
                 label-color="black"
                 :options="langOptions"
+                :label="$t('language')"
                 borderless
                 emit-value
                 map-options
@@ -97,9 +98,6 @@ export default {
     this.currentPage = this.$route.name
   },
   computed: {
-    screenConfig () {
-      return this.$q.screen
-    },
     langOptions () {
       return [
         { value: 'en-us', label: this.$t('languages.english'), icon: '🇺🇸' },
