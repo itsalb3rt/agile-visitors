@@ -56,6 +56,7 @@ export default {
   name: 'MainLayout',
   mounted () {
     this.currentPage = this.$route.name
+    this.fetchLanguage()
   },
   computed: {
     /**
@@ -66,6 +67,9 @@ export default {
     }
   },
   methods: {
+    fetchLanguage () {
+      this.$i18n.locale = window.localStorage.getItem('_currentLang')
+    },
     goToGithub () {
       window.location.href = 'https://github.com/itsalb3rt/agile-visitors'
     },
