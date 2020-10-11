@@ -1,42 +1,42 @@
 <template>
-  <q-page-container>
+  <q-page-container style="padding-left: 0; padding-top: 25px">
     <div class="q-ml-md">
       <q-btn class="q-mr-sm" color="primary" icon="file_copy" :label="$t('reports.get_report')" :loading="isReportLoading" @click="fetchReport()" />
       <q-btn color="primary" icon="arrow_circle_down" :label="$t('reports.csv_button')" @click="downloadReportAsCSV()" :loading="isDownloadLoading" v-show="visits.length > 0" />
     </div>
     <q-page>
-    <div class="q-pa-sm">
-    <div class="row">
-      <div class="col">
-        <AppDatePicker class="inline-block" :label="$t('reports.from_date')" v-model.trim="filters.fromDate" />
-        <AppDatePicker class="inline-block" :label="$t('reports.to_date')" v-model.trim="filters.toDate" />
-      </div>
-    </div>
-    <div class="q-pl-sm row">
-        <div class="col flex">
-          <q-input disable class="q-mr-md" :label="$t('reports_table.visitor_code')" v-model.trim="filters.visitorCode" />
-          <q-input disable :label="$t('reports_table.receiver_code')" v-model.trim="filters.receiverCode" />
+      <div class="q-pa-sm">
+        <div class="row">
+          <div class="col">
+            <AppDatePicker class="inline-block" :label="$t('reports.from_date')" v-model.trim="filters.fromDate" />
+            <AppDatePicker class="inline-block" :label="$t('reports.to_date')" v-model.trim="filters.toDate" />
+          </div>
         </div>
-    </div>
-    <div class="row q-mt-lg">
-      <div class="col">
-        <div class="q-pa-md">
-          <q-table
-            :title="$t('reports.title')"
-            :data="visits"
-            :columns="tableColumns"
-            :loading="isReportLoading"
-            :rows-per-page-label="$t('reports.table_recors_per_page')"
-            :no-data-label="$t('reports.table_no_data')"
-            row-key="date"
-          >
-            <template #top-right>{{ $t('reports.table_results',{results: visits.length}) }}</template>
-          </q-table>
+        <div class="row q-pl-sm">
+            <div class="col flex">
+              <q-input disable class="q-mr-md" :label="$t('reports_table.visitor_code')" v-model.trim="filters.visitorCode" />
+              <q-input disable :label="$t('reports_table.receiver_code')" v-model.trim="filters.receiverCode" />
+            </div>
+        </div>
+        <div class="row q-mt-lg">
+          <div class="col">
+            <div class="q-pa-sm">
+              <q-table
+                :title="$t('reports.title')"
+                :data="visits"
+                :columns="tableColumns"
+                :loading="isReportLoading"
+                :rows-per-page-label="$t('reports.table_recors_per_page')"
+                :no-data-label="$t('reports.table_no_data')"
+                row-key="date"
+              >
+                <template #top-right>{{ $t('reports.table_results',{results: visits.length}) }}</template>
+              </q-table>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  </q-page>
+    </q-page>
   </q-page-container>
 </template>
 
