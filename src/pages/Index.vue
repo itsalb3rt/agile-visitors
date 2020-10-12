@@ -1,9 +1,10 @@
 <template>
   <div class="q-pa-md">
     <q-form @submit="createvisit()" ref="formVisits" class="q-gutter-md">
-      <div class="row q-gutter-xs">
+      <div class="row q-gutter-md">
         <div class="col-12 col-md-5 col-sm-12">
           <label class="text-weight-bold text-h4" for="">{{ $t('visitor') }}</label>
+
           <q-input
             :label="$t('register_visit_form.code')"
             v-model="form.visitor.code"
@@ -69,7 +70,7 @@
           <characters-remaining-info :text="form.receiver.titlePosition" :maxLength="150" :numberCharactersToNotify="130" />
         </div>
       </div>
-      <div class="row q-gutter-xs">
+      <div class="row q-mt-lg">
         <q-btn :loading="loading.submitVisit" color="primary" icon="save" :label="$t('save_button')" type="submit" />
       </div>
     </q-form>
