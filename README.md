@@ -36,7 +36,7 @@ build: {
   env: {
     API: ctx.dev
       ? 'http://localhost:5000/api' // Development API
-      : 'http://localhost:5000/api' // Production API
+      : 'https://agile-visitors-api.gibucket.xyz/api' // Production API
   }
 }
 ```
