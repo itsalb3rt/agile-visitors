@@ -29,6 +29,9 @@
                 :rows-per-page-label="$t('reports.table_recors_per_page')"
                 :no-data-label="$t('reports.table_no_data')"
                 row-key="date"
+                :pagination.sync="pagination"
+                :rows-per-page-options="[10]"
+                @request="fetchReport"
               >
                 <template #top-right>{{ $t('reports.table_results',{results: visits.length}) }}</template>
               </q-table>
@@ -59,7 +62,14 @@ export default {
       },
       visits: [],
       isReportLoading: false,
-      isDownloadLoading: false
+      isDownloadLoading: false,
+      pagination: {
+        sortBy: 'createdAt',
+        descending: false,
+        page: 1,
+        rowsPerPage: 10,
+        rowsNumber: 10
+      }
     }
   },
   computed: {
@@ -85,11 +95,24 @@ export default {
     }
   },
   methods: {
-    fetchReport () {
+    fetchReport (props) {
+      if (props) {
+        const { page, rowsPerPage } = props.pagination
+        this.pagination.rowsPerPage = rowsPerPage
+        this.pagination.page = page
+
+        this.filters.page = page
+        this.filters.limit = rowsPerPage
+      } else {
+        this.filters.page = this.pagination.page
+        this.filters.limit = this.pagination.rowsPerPage
+      }
+
       this.isReportLoading = true
       this.$store.dispatch('visits/getAll', this.filters)
         .then(({ data: response }) => {
           this.visits = response.data
+          this.pagination.rowsNumber = response.pagination.total
         })
         .catch(error => {
           console.log(error)
