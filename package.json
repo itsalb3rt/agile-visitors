@@ -16,7 +16,7 @@
     "@quasar/extras": "^1.9.6",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "papaparse": "^5.3.0",
+    "papaparse": "^5.3.2",
     "quasar": "^1.14.0",
     "vue-i18n": "^8.21.1"
   },
